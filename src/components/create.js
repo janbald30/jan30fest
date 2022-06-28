@@ -9,7 +9,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
-
+import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 
 const Create = () => {
     const [name, setName] = useState('');
@@ -73,46 +73,158 @@ const Create = () => {
     }
 
     return (
-        <Box sx={{ width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}>
-            <List>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemText>Name (bitte Vor- und Nachname)</ListItemText>
-                        <TextField
-                            id="outlined-basic"
-                            label="Name"
-                            variant="outlined"
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemText>Wie viele Personen sind wir?</ListItemText>
-                    <Slider
-                        aria-label="Anzahl Leute"
-                        defaultValue={2}
-                        valueLabelDisplay="auto"
-                        step={1}
-                        marks
-                        min={1}
-                        max={6}
-                        onChangeCommitted={(e, v) => setNumber(v)}
+        <MDBContainer >
+            <MDBRow >
+                <MDBCol>
+                    <div className='d-flex justify-content-start'>Name</div>
+                </MDBCol>
+                <MDBCol>
+                    <TextField
+                        className="d-flex justify-content-end"
+                        id="outlined-basic"
+                        label="Name"
+                        variant="outlined"
+                        onChange={(e) => setName(e.target.value)}
                     />
-                </ListItem>
+                </MDBCol>
+            </MDBRow>
+            <Divider />
+            <MDBRow >
+                <MDBCol>
+                    <div className='d-flex justify-content-start' >Was bringe ich mit?</div>
+                </MDBCol>
+
+                <MDBCol>
+                    <MDBCol>
+                        <MDBRow >
+                            <MDBCol> <label className="d-flex justify-content-start">Salat </label> </MDBCol>
+                            <MDBCol>
+                                <Checkbox className="d-flex justify-content-end"
+                                    onChange={(e) => handleMitbringsel(e.target.checked, "Salat")} />
+                            </MDBCol>
+                        </MDBRow>
+                    </MDBCol>
+                    <MDBCol>
+                        <MDBRow >
+                            <MDBCol> <label className="d-flex justify-content-start">Dessert </label> </MDBCol>
+                            <MDBCol >
+                                <Checkbox className="d-flex justify-content-end"
+                                    onChange={(e) => handleMitbringsel(e.target.checked, "Dessert")} />
+                            </MDBCol>
+                        </MDBRow>
+                    </MDBCol>
+                    <MDBCol>
+                        <MDBRow >
+                            <MDBCol> <label className="d-flex justify-content-start">Freude </label> </MDBCol>
+                            <MDBCol >
+                                <Checkbox className="d-flex justify-content-end"
+                                    onChange={(e) => handleMitbringsel(e.target.checked, "Freude")} />
+                            </MDBCol>
+                        </MDBRow>
+                    </MDBCol>
+                    <MDBCol>
+                        <MDBRow >
+                            <MDBCol> <label className="d-flex justify-content-start">sonstiges</label> </MDBCol>
+                            <MDBCol >
+                                <Checkbox className="d-flex justify-content-end"
+                                    onChange={(e) => handleMitbringsel(e.target.checked, "Was anderes")} />
+                            </MDBCol>
+                        </MDBRow>
+                    </MDBCol>
+                </MDBCol>
+
+            </MDBRow>
+            <Divider />
+            <MDBRow className="gx-5">
+                <MDBCol>
+                    <div className='d-flex justify-content-start'>Was anderes</div>
+                </MDBCol>
+                <MDBCol>
+                    <TextField
+                        className="d-flex justify-content-end"
+                        id="outlined-basic"
+                        label="Mitbringsel"
+                        variant="outlined"
+                        onChange={(e) => setElseBring(e.target.value)}
+                    />
+                </MDBCol>
+            </MDBRow>
+            <Divider />
+            <MDBRow >
+                <MDBCol>
+                    <div className='d-flex justify-content-start'>Wann erscheine ich?</div>
+                </MDBCol>
+
+                <MDBCol>
+                    <MDBCol>
+                        <MDBRow >
+                            <MDBCol> <label className=" d-flex justify-content-start">Brunch </label> </MDBCol>
+                            <MDBCol>
+                                <Checkbox className="d-flex justify-content-end"
+                                    onChange={(e) => handleAuftauchzeit(e.target.checked, "Brunch")} />
+                            </MDBCol>
+                        </MDBRow>
+                    </MDBCol>
+                    <MDBCol>
+                        <MDBRow >
+                            <MDBCol> <label className="d-flex justify-content-start">Dessert </label> </MDBCol>
+                            <MDBCol>
+                                <Checkbox className="d-flex justify-content-end"
+                                    onChange={(e) => handleAuftauchzeit(e.target.checked, "Dessert")} />
+                            </MDBCol>
+                        </MDBRow>
+                    </MDBCol>
+                    <MDBCol>
+                        <MDBRow >
+                            <MDBCol> <label className="d-flex justify-content-start">Abend </label> </MDBCol>
+                            <MDBCol >
+                                <Checkbox className="d-flex justify-content-end"
+                                    onChange={(e) => handleAuftauchzeit(e.target.checked, "Abend")} />
+                            </MDBCol>
+                        </MDBRow>
+                    </MDBCol>
+                    <MDBCol>
+                        <MDBRow >
+                            <MDBCol> <label className="d-flex justify-content-start">Stadt </label> </MDBCol>
+                            <MDBCol >
+                                <Checkbox className="d-flex justify-content-end"
+                                    onChange={(e) => handleAuftauchzeit(e.target.checked, "Stadt")} />
+                            </MDBCol>
+                        </MDBRow>
+                    </MDBCol>
+                </MDBCol>
+            </MDBRow>
+            <Divider />
+            <MDBRow className="gx-5">
+                <MDBCol>
+                    <div className='d-flex justify-content-start'>Sonstiger Kommentar</div>
+                </MDBCol>
+                <MDBCol>
+                    <TextField
+                        className="d-flex justify-content-end"
+                        id="outlined-basic"
+                        label="Kommentar"
+                        variant="outlined"
+                        onChange={(e) => setElseBring(e.target.value)}
+                    />
+                </MDBCol>
+            </MDBRow>
+            <Divider />
+            <MDBCol className="d-flex justify-content-end">
+                <MDBRow >
+                    <Button variant="contained" onClick={addCreateHandler}>Send</Button>
+                </MDBRow>
+            </MDBCol>
+
+        </MDBContainer>
+        /*    <List>
+
+
                 <Divider />
                 <ListItem disablePadding>
                     <ListItemButton>
                         <ListItemText>Was bringe ich mit?</ListItemText>
-                        <div>
-                            <div>Salat <Checkbox
-                                onChange={(e) => handleMitbringsel(e.target.checked, "Salat")} /></div>
-                            <div>Dessert <Checkbox
-                                onChange={(e) => handleMitbringsel(e.target.checked, "Dessert")} /></div>
-                            <div>Freude <Checkbox
-                                onChange={(e) => handleMitbringsel(e.target.checked, "Freude")} /></div>
-                            <div>Was anders <Checkbox
-                                onChange={(e) => handleMitbringsel(e.target.checked, "Was anderes")} /></div>
-                        </div>
+
                     </ListItemButton>
                 </ListItem>
                     <ListItem disablePadding>
@@ -161,8 +273,8 @@ const Create = () => {
                         <Button variant="contained" onClick={addCreateHandler}>Send</Button>
                     </ListItemButton>
                 </ListItem>
-            </List>
-        </Box>
+            </List >*/
+
     )
 }
 
